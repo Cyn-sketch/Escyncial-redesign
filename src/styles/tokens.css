@@ -1,0 +1,37 @@
+/* Escyncial: Roxborough CF is the brand display face (commercial); DM Serif Display stands in until the licensed files are added. Montserrat for labels, Poppins for body. Loaded from Google Fonts in index.html. */
+
+:root {
+  /* Escyncial: black + white, burgundy secondary. */
+  --bg: #000000;
+  --bg-2: #070707;
+  --purple-950: #1a070c;
+  --purple-800: #3d0a16;
+  --purple-600: #6b0f24;
+  --purple-500: #8a1530;
+  --violet: #a8203f;
+  --magenta: #d0304f;
+  --chrome: #d9d4d5;
+  --chrome-dim: rgba(217, 212, 213, 0.28);
+
+  /* Glitch channel colours: only ever used inside RGB-split effects. */
+  --glitch-a: #ff2a6d;
+  --glitch-b: #e8e8e8;
+
+  --ink: #faf7f7;
+  --ink-dim: rgba(250, 247, 247, 0.64);
+  --ink-faint: rgba(250, 247, 247, 0.38);
+
+  --grad-brand: linear-gradient(135deg, var(--purple-600) 0%, var(--magenta) 100%);
+
+  /* Headings: Barlow ExtraBold (used at weight 700). Everything else: Lato.
+     Unbounded is kept only for the "Selected Work" title and the brand reel. */
+  --font-display: 'Roxborough CF', 'DM Serif Display', 'Bodoni 72', Georgia, serif;
+  --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif; /* small uppercase labels */
+  --font-feature: 'Roxborough CF', 'DM Serif Display', Georgia, serif;
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --nav-h: 76px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --cut: 12px; /* angled corner size on buttons */
+}

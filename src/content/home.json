@@ -1,0 +1,415 @@
+{
+  "data": {
+    "id": 1,
+    "documentId": "homepage",
+    "seo": {
+      "metaTitle": "Escyncial | Strategy Meets Savagery",
+      "metaDescription": "Escyncial is a strategy-led marketing, creative and brand growth studio. Social, content, Meta ads, brand and web, built to grow the business behind them.",
+      "shareImage": {
+        "url": "./assets/logo/esc-logo-full.png",
+        "alternativeText": "Escyncial logo"
+      }
+    },
+    "brand": {
+      "name": "Escyncial",
+      "shortName": "ESC",
+      "logoFull": {
+        "url": "./assets/logo/esc-logo-full.png",
+        "alternativeText": "Escyncial logo",
+        "width": 1364,
+        "height": 1648
+      },
+      "logoNav": {
+        "url": "./assets/logo/esc-logo-white.png",
+        "alternativeText": "Escyncial",
+        "width": 1758,
+        "height": 219
+      }
+    },
+    "navigation": [
+      {
+        "label": "Receipts",
+        "href": "#work"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Clients",
+        "href": "#brands"
+      },
+      {
+        "label": "Numbers",
+        "href": "#numbers"
+      },
+      {
+        "label": "Founders",
+        "href": "#founders"
+      },
+      {
+        "label": "Contact",
+        "href": "https://wa.me/919582526868"
+      }
+    ],
+    "hero": {
+      "eyebrow": "Strategy-led marketing · Creative · Brand growth",
+      "headline": [
+        "Strategy",
+        "meets",
+        "savagery."
+      ],
+      "subline": "Pretty feeds don't pay rent. We find where your business can grow, build the brand to carry it, then make the noise that sells.",
+      "cta": {
+        "label": "Start a growth audit",
+        "href": "#contact",
+        "media": {
+          "url": "",
+          "mime": "video/mp4"
+        },
+        "video": null
+      },
+      "scrollHint": "Scroll for the receipts",
+      "stats": [
+        {
+          "v": "34×",
+          "l": "Best ROAS"
+        },
+        {
+          "v": "₹2Cr+",
+          "l": "Revenue driven"
+        },
+        {
+          "v": "40K+",
+          "l": "Leads generated"
+        }
+      ]
+    },
+    "work": {
+      "heading": "The Receipts",
+      "label": "Receipt",
+      "ctaLabel": "Get results like this",
+      "exploreAll": {
+        "label": "See what we deploy",
+        "href": "#services"
+      },
+      "projects": [
+        {
+          "id": 1,
+          "slug": "grid-flip",
+          "title": "+14.2K in 21 days",
+          "tags": [
+            "Instagram",
+            "Organic",
+            "Zero paid promotion"
+          ],
+          "href": "#contact",
+          "media": {
+            "url": "",
+            "mime": "image/placeholder",
+            "alternativeText": "The Grid Flip: 14.2K followers in 21 days"
+          },
+          "video": null,
+          "palette": [
+            "#3d0a16",
+            "#d0304f"
+          ]
+        },
+        {
+          "id": 2,
+          "slug": "roas-report",
+          "title": "34× ROAS",
+          "tags": [
+            "Performance marketing",
+            "Meta",
+            "$12 in, $412 out"
+          ],
+          "href": "#contact",
+          "media": {
+            "url": "",
+            "mime": "image/placeholder",
+            "alternativeText": "The ROAS Report: a $12 ad that brought in $412"
+          },
+          "video": null,
+          "palette": [
+            "#1c070c",
+            "#a8203f"
+          ]
+        },
+        {
+          "id": 3,
+          "slug": "reddit-threads",
+          "title": "Viral. Twice.",
+          "tags": [
+            "Reddit",
+            "Community",
+            "Monetised both times"
+          ],
+          "href": "#contact",
+          "media": {
+            "url": "",
+            "mime": "image/placeholder",
+            "alternativeText": "Reddit threads that went viral twice and converted"
+          },
+          "video": null,
+          "palette": [
+            "#4a0c1a",
+            "#e8e8e8"
+          ]
+        },
+        {
+          "id": 4,
+          "slug": "community-building",
+          "title": "50K+ community",
+          "tags": [
+            "Multi-platform",
+            "Audience",
+            "Built in 3 months"
+          ],
+          "href": "#contact",
+          "media": {
+            "url": "",
+            "mime": "image/placeholder",
+            "alternativeText": "A 50K+ community built from scratch in 3 months"
+          },
+          "video": null,
+          "palette": [
+            "#22080e",
+            "#d64560"
+          ]
+        },
+        {
+          "id": 5,
+          "slug": "content-overhaul",
+          "title": "+320% engagement",
+          "tags": [
+            "Content strategy",
+            "Conversion",
+            "Followers into buyers"
+          ],
+          "href": "#contact",
+          "media": {
+            "url": "",
+            "mime": "image/placeholder",
+            "alternativeText": "Content overhaul: engagement up 320%"
+          },
+          "video": null,
+          "palette": [
+            "#3d0a16",
+            "#b8455e"
+          ]
+        }
+      ]
+    },
+    "services": {
+      "heading": "What We Deploy",
+      "items": [
+        {
+          "id": 1,
+          "slug": "performance-marketing",
+          "index": "01",
+          "title": "Performance Marketing",
+          "summary": "Paid media that pays for itself. Meta and Google campaigns, funnels and lead engines, judged on revenue. Trusted by EY, Somany, Lindström and GolfBuy India.",
+          "capabilities": [
+            "Meta & Google Ads",
+            "Lead generation",
+            "Funnel strategy",
+            "Retargeting",
+            "GA4 & ROI tracking"
+          ],
+          "zoneColor": "#9a1a36",
+          "visual": "cubes"
+        },
+        {
+          "id": 2,
+          "slug": "strategy",
+          "index": "02",
+          "title": "Growth Strategy",
+          "summary": "Where you can grow, who you're really talking to, and how we'll know it worked. Before a single post.",
+          "capabilities": [
+            "Growth strategy",
+            "Digital brand positioning",
+            "Social media strategy",
+            "Analytics & performance tracking"
+          ],
+          "zoneColor": "#a8203f",
+          "visual": "neural"
+        },
+        {
+          "id": 3,
+          "slug": "brand",
+          "index": "03",
+          "title": "Brand Identity",
+          "summary": "A face, a voice and a story people recognise without seeing your logo.",
+          "capabilities": [
+            "Brand identity",
+            "Storytelling",
+            "Creative direction"
+          ],
+          "zoneColor": "#d0304f",
+          "visual": "portal"
+        },
+        {
+          "id": 4,
+          "slug": "content",
+          "index": "04",
+          "title": "Content With Teeth",
+          "summary": "Reels, scripts and feeds made to be watched twice and acted on once.",
+          "capabilities": [
+            "Social media management",
+            "Instagram & Reddit growth",
+            "Reels & short-form scripts",
+            "UGC concepts",
+            "Community management"
+          ],
+          "zoneColor": "#c23a56",
+          "visual": "frames"
+        },
+        {
+          "id": 5,
+          "slug": "web",
+          "index": "05",
+          "title": "Websites",
+          "summary": "Somewhere worth landing. Sites and landing pages built to convert the attention we earn you.",
+          "capabilities": [
+            "Website design & development",
+            "Landing pages",
+            "Digital experiences"
+          ],
+          "zoneColor": "#b84a62",
+          "visual": "ledwall"
+        }
+      ]
+    },
+    "brands": {
+      "heading": "Brands We've Grown",
+      "items": [
+        {
+          "name": "EY",
+          "logo": null
+        },
+        {
+          "name": "Somany",
+          "logo": null
+        },
+        {
+          "name": "Lindström",
+          "logo": null
+        },
+        {
+          "name": "GolfBuy India",
+          "logo": null
+        },
+        {
+          "name": "Kepchaki Momo",
+          "logo": null
+        },
+        {
+          "name": "Bellavita",
+          "logo": null
+        },
+        {
+          "name": "Eraaya Events",
+          "logo": null
+        },
+        {
+          "name": "ANS Design House",
+          "logo": null
+        },
+        {
+          "name": "Chinfu",
+          "logo": null
+        },
+        {
+          "name": "Rove Cafe",
+          "logo": null
+        },
+        {
+          "name": "Techpaathshala",
+          "logo": null
+        },
+        {
+          "name": "Kamdhenu Paints",
+          "logo": null
+        },
+        {
+          "name": "Amrit Cements",
+          "logo": null
+        },
+        {
+          "name": "Stonepedia",
+          "logo": null
+        },
+        {
+          "name": "Sonalika Publications",
+          "logo": null
+        }
+      ]
+    },
+    "contact": {
+      "heading": "Done posting into the void?",
+      "subheading": "Let's make some noise.",
+      "cta": {
+        "label": "Chat on WhatsApp",
+        "href": "https://wa.me/919582526868"
+      },
+      "locations": [
+        "India",
+        "Worldwide"
+      ],
+      "whatsapp": {
+        "number": "+91 95825 26868",
+        "href": "https://wa.me/919582526868"
+      }
+    },
+    "footer": {
+      "tagline": "Building brands. Breaking patterns. Beyond ordinary.",
+      "quickLinks": [
+        {
+          "label": "Home",
+          "href": "#main"
+        },
+        {
+          "label": "Receipts",
+          "href": "#work"
+        },
+        {
+          "label": "Services",
+          "href": "#services"
+        },
+        {
+          "label": "Clients",
+          "href": "#brands"
+        },
+        {
+          "label": "Numbers",
+          "href": "#numbers"
+        },
+        {
+          "label": "Founders",
+          "href": "#founders"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Based in India",
+          "country": "working worldwide"
+        }
+      ],
+      "socials": [
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/escyncial/"
+        },
+        {
+          "label": "WhatsApp",
+          "href": "https://wa.me/919582526868"
+        }
+      ],
+      "legal": [],
+      "copyright": "© 2026 Escyncial. All rights reserved.",
+      "blurb": "Strategy-led marketing, creative and brand growth. Sister venture to MadAutomate."
+    }
+  },
+  "meta": {}
+}
