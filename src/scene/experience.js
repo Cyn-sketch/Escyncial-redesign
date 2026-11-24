@@ -85,7 +85,7 @@ export async function init3D(ctx) {
   if (!mobile && !reduced) {
     html.classList.add('flight'); // switch layout first so measurements are right
     // Placeholder posters are drawn with the brand fonts: make sure they're loaded.
-    await Promise.all([document.fonts.load('400 78px "DM Serif Display"'), document.fonts.load('600 22px Montserrat')]).catch(() => {});
+    await Promise.all([document.fonts.load('400 78px "DM Serif Display"'), document.fonts.load('600 22px Montserrat'), document.fonts.load('800 20px Montserrat'), document.fonts.load('900 34px Montserrat')]).catch(() => {});
     const projectEls = [...document.querySelectorAll('.stop--project')];
     const exploreEl = document.querySelector('.stop--explore');
     const serviceEls = [...document.querySelectorAll('.stop--service')];

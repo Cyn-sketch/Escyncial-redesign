@@ -5,7 +5,7 @@ import { shardGeometry } from './ShardField.js';
 /* Texture: real image / MP4 from the content file, or a placeholder   */
 /* ------------------------------------------------------------------ */
 
-/** Placeholder poster drawn on a canvas: purple/black gradient tile with the project name. */
+/** Placeholder poster drawn on a canvas: a loud, full "receipt" for the result. */
 function placeholderTexture(project, index) {
   const W = 1280, H = 800;
   const cv = document.createElement('canvas');
@@ -13,65 +13,161 @@ function placeholderTexture(project, index) {
   cv.height = H;
   const g = cv.getContext('2d');
   const [c1, c2] = project.palette || ['#3d0a16', '#d0304f'];
+  const BURG = '#d0304f', INK = '#faf7f7', DIM = 'rgba(250,247,247,0.55)';
+  const SERIF = '"DM Serif Display", Georgia, serif', SANS = 'Montserrat, sans-serif';
+  const no = String(index + 1).padStart(3, '0');
+  const tags = project.tags || [];
+  const desc = (project.media && project.media.alternativeText) || '';
 
-  const bg = g.createLinearGradient(0, 0, W, H);
+  // Base: black with a burgundy bleed from the left
+  g.fillStyle = '#000';
+  g.fillRect(0, 0, W, H);
+  const bg = g.createLinearGradient(0, 0, W, 0);
   bg.addColorStop(0, c1);
-  bg.addColorStop(1, '#000000');
+  bg.addColorStop(0.62, '#070203');
   g.fillStyle = bg;
   g.fillRect(0, 0, W, H);
-
-  const glow = g.createRadialGradient(W * 0.78, H * 0.18, 0, W * 0.78, H * 0.18, W * 0.7);
+  const glow = g.createRadialGradient(W * 0.18, H * 0.55, 0, W * 0.18, H * 0.55, W * 0.55);
   glow.addColorStop(0, c2);
   glow.addColorStop(1, 'rgba(0,0,0,0)');
-  g.globalAlpha = 0.85;
+  g.globalAlpha = 0.45;
   g.fillStyle = glow;
   g.fillRect(0, 0, W, H);
   g.globalAlpha = 1;
 
-  // Perspective grid floor: reads as "stage / screen" without being a fake photo.
-  g.strokeStyle = 'rgba(217,212,213,0.14)';
-  g.lineWidth = 1.5;
-  const hz = H * 0.62;
-  for (let i = -12; i <= 12; i++) {
-    g.beginPath();
-    g.moveTo(W / 2 + i * 26, hz);
-    g.lineTo(W / 2 + i * 190, H);
-    g.stroke();
-  }
-  for (let j = 0; j < 9; j++) {
-    const y = hz + Math.pow(j / 8, 2) * (H - hz);
-    g.beginPath();
-    g.moveTo(0, y);
-    g.lineTo(W, y);
-    g.stroke();
-  }
-  // Scanlines
-  g.fillStyle = 'rgba(255,255,255,0.035)';
-  for (let y = 0; y < H; y += 6) g.fillRect(0, y, W, 1);
-
-  // Labels
-  g.fillStyle = 'rgba(250,247,247,0.6)';
-  g.font = '600 22px Montserrat, sans-serif';
-  g.fillText(`RECEIPT NO. ${String(index + 1).padStart(3, '0')}`, 56, 74);
+  // Giant ghost receipt number filling the back
+  g.save();
+  g.font = `400 620px ${SERIF}`;
+  g.fillStyle = 'rgba(208,48,79,0.10)';
   g.textAlign = 'right';
-  g.fillText('ESCYNCIAL', W - 56, 74);
-  g.textAlign = 'left';
+  g.fillText(no.replace(/^0+/, '0'), W + 40, H - 40);
+  g.restore();
 
-  // Title, wrapped
-  g.fillStyle = '#faf7f7';
-  g.font = '400 92px "DM Serif Display", Georgia, serif';
+  // Top ticker strip
+  g.fillStyle = BURG;
+  g.fillRect(0, 0, W, 54);
+  g.fillStyle = '#000';
+  g.font = `800 20px ${SANS}`;
+  const tick = 'STRATEGY MEETS SAVAGERY  ✦  ESCYNCIAL  ✦  RECEIPTS, NOT PROMISES  ✦  ';
+  let tx = -40;
+  while (tx < W) { g.fillText(tick, tx, 35); tx += g.measureText(tick).width; }
+
+  // Header row
+  g.fillStyle = INK;
+  g.font = `700 22px ${SANS}`;
+  g.fillText(`RECEIPT NO. ${no}`, 56, 112);
+  g.textAlign = 'right';
+  g.fillText('ESCYNCIAL', W - 56, 112);
+  g.textAlign = 'left';
+  g.strokeStyle = 'rgba(250,247,247,0.35)';
+  g.setLineDash([6, 8]);
+  g.lineWidth = 2;
+  g.beginPath(); g.moveTo(56, 138); g.lineTo(W - 56, 138); g.stroke();
+  g.setLineDash([]);
+
+  // Left: the result, huge
+  const LX = 56, LW = 640;
+  g.fillStyle = INK;
+  let size = 170;
+  g.font = `400 ${size}px ${SERIF}`;
   const words = project.title.split(' ');
   const lines = [];
   let line = '';
   for (const w of words) {
     const test = line ? `${line} ${w}` : w;
-    if (g.measureText(test).width > W - 140 && line) {
-      lines.push(line);
-      line = w;
-    } else line = test;
+    if (g.measureText(test).width > LW && line) { lines.push(line); line = w; } else line = test;
   }
   lines.push(line);
-  lines.forEach((l, i) => g.fillText(l, 56, H - 70 - (lines.length - 1 - i) * 86));
+  if (lines.length > 3) { size = 120; g.font = `400 ${size}px ${SERIF}`; }
+  const lh = size * 0.92;
+  const topY = 160 + size * 0.85;
+  lines.slice(0, 3).forEach((l, i) => {
+    g.fillStyle = i === lines.length - 1 && lines.length > 1 ? BURG : INK;
+    g.fillText(l, LX, topY + i * lh);
+  });
+  const afterTitle = topY + (Math.min(lines.length, 3) - 1) * lh + 60;
+
+  // Description under the result
+  g.fillStyle = DIM;
+  g.font = `500 26px ${SANS}`;
+  const dwords = desc.split(' ');
+  let dl = '', dy = afterTitle;
+  for (const w of dwords) {
+    const t = dl ? `${dl} ${w}` : w;
+    if (g.measureText(t).width > LW - 20 && dl) { g.fillText(dl, LX, dy); dy += 36; dl = w; } else dl = t;
+  }
+  if (dl) g.fillText(dl, LX, dy);
+
+  // Right: itemised line items
+  const RX = 760, RW = W - 56 - RX;
+  let ry = 200;
+  g.font = `700 16px ${SANS}`;
+  g.fillStyle = BURG;
+  g.fillText('ITEMISED', RX, ry);
+  ry += 46;
+  const items = tags.map((t, i) => [String(i + 1).padStart(2, '0'), t]);
+  items.forEach(([n, t]) => {
+    g.font = `600 17px ${SANS}`;
+    g.fillStyle = DIM;
+    g.fillText(n, RX, ry);
+    g.font = `600 25px ${SANS}`;
+    g.fillStyle = INK;
+    g.fillText(t.toUpperCase(), RX + 48, ry);
+    g.font = `700 22px ${SANS}`;
+    g.fillStyle = BURG;
+    g.textAlign = 'right';
+    g.fillText('✓', W - 56, ry);
+    g.textAlign = 'left';
+    g.strokeStyle = 'rgba(250,247,247,0.18)';
+    g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(RX, ry + 22); g.lineTo(RX + RW, ry + 22); g.stroke();
+    ry += 70;
+  });
+  // Total row
+  ry += 10;
+  g.fillStyle = BURG;
+  g.fillRect(RX, ry - 34, RW, 64);
+  g.fillStyle = '#000';
+  g.font = `800 20px ${SANS}`;
+  g.fillText('TOTAL', RX + 22, ry + 6);
+  g.textAlign = 'right';
+  g.font = `400 34px ${SERIF}`;
+  g.fillText(project.title, RX + RW - 22, ry + 10);
+  g.textAlign = 'left';
+
+  // Barcode
+  const by = H - 150;
+  let bx = RX;
+  let seed = (index + 3) * 9301;
+  const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+  g.fillStyle = INK;
+  while (bx < RX + RW - 4) { const w = 2 + Math.floor(rnd() * 6); if (rnd() > 0.35) g.fillRect(bx, by, w, 70); bx += w + 2; }
+  g.font = `600 15px ${SANS}`;
+  g.fillStyle = DIM;
+  g.fillText(`ESC-${no}  ·  RESULT ON FILE`, RX, by + 96);
+
+  // Stamp
+  g.save();
+  g.translate(LX + 470, H - 120);
+  g.rotate(-0.14);
+  g.strokeStyle = BURG;
+  g.lineWidth = 5;
+  g.strokeRect(-150, -46, 300, 92);
+  g.lineWidth = 2;
+  g.strokeRect(-140, -36, 280, 72);
+  g.fillStyle = BURG;
+  g.font = `900 34px ${SANS}`;
+  g.textAlign = 'center';
+  g.fillText('DELIVERED', 0, 12);
+  g.restore();
+
+  // Perforated bottom edge
+  g.fillStyle = '#000';
+  for (let x = 0; x < W; x += 32) { g.beginPath(); g.arc(x + 16, H + 4, 11, 0, Math.PI * 2); g.fill(); }
+
+  // Subtle scanlines
+  g.fillStyle = 'rgba(255,255,255,0.025)';
+  for (let y = 0; y < H; y += 6) g.fillRect(0, y, W, 1);
 
   const tex = new THREE.CanvasTexture(cv);
   tex.colorSpace = THREE.SRGBColorSpace;
