@@ -179,3 +179,7 @@ html.chapters #stages .xidx__name { margin-bottom: 8px; }
 html.chapters #stages .xidx__yr { margin-top: auto; }
 html.chapters #stages .xidx { flex: 0 0 auto; height: clamp(220px, 30vh, 280px); }
 html.chapters #stages .xidx__row { width: clamp(260px, 22vw, 340px); } html.chapters #stages .xidx__name { font-size: clamp(32px, 3.2vw, 56px); }
+/* Receipt proof card inside the page (phones) */
+.project__media--receipt { aspect-ratio: 1280 / 800; background: #000; overflow: hidden; }
+.project__media--receipt .receipt-canvas { display: block; width: 100%; height: 100%; }
+html:not(.flight) .stop--project { padding-top: 36px; padding-bottom: 36px; gap: 22px; }

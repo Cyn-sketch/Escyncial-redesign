@@ -4,6 +4,7 @@ import './styles/sections.css';
 import './styles/escyncial.css';
 import { initCursor } from './ui/cursor.js';
 import { initChapters } from './ui/chapters.js';
+import { drawReceipt } from './ui/receiptCard.js';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -157,6 +158,29 @@ async function initBrands() {
   });
 }
 initBrands();
+
+/* ---------------- Receipt proof cards in the page (phones, no-WebGL) ---------------- */
+async function initReceiptCards() {
+  const content = await getHomeContent();
+  const projects = content.work?.projects || [];
+  await Promise.all([
+    document.fonts.load('400 78px "DM Serif Display"'), document.fonts.load('italic 400 44px "DM Serif Display"'),
+    document.fonts.load('600 22px Montserrat'), document.fonts.load('800 20px Montserrat'), document.fonts.load('900 34px Montserrat'),
+  ]).catch(() => {});
+  document.querySelectorAll('.stop--project').forEach((el) => {
+    const i = Number(el.dataset.index);
+    const p = projects[i];
+    const fig = el.querySelector('.project__media');
+    if (!p || !fig || (p.media && p.media.url)) return;
+    const cv = drawReceipt(p, i);
+    cv.className = 'receipt-canvas';
+    cv.setAttribute('role', 'img');
+    cv.setAttribute('aria-label', (p.media && p.media.alternativeText) || p.title);
+    fig.replaceChildren(cv);
+    fig.classList.add('project__media--receipt');
+  });
+}
+initReceiptCards();
 initChapters({ enabled: !mobile && !reduced, onChange: () => { lastHeight = 0; remeasure(); } });
 
 /* ---------------- 3D ---------------- */
